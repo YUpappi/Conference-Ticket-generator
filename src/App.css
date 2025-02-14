@@ -450,7 +450,7 @@ textarea:focus {
 .ticket-bg {
   width: 330px;
   height: 660px;
-  background: url(./Subtract.png) no-repeat center/cover;
+  background: url(../src/assets/Subtract.png) no-repeat center/cover;
   position: relative;
   margin-top: 20px;
 }

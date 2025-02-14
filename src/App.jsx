@@ -7,7 +7,7 @@ import TicketGenerated from "./Components/TicketGenerated";
 
 function App() {
   const [select, setSelect] = useState(1);
-  const [ticketType, setTicketType] = useState("regular access");
+  const [ticketType, setTicketType] = useState(null);
   const [currentStep, setCurrentStep] = useState(1);
 
   // function handleItems(Item) {
