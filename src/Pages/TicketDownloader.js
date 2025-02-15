@@ -29,6 +29,18 @@ export function ticketDownloader() {
       pdf.addImage(imageData, "PNG", 0, position, imageWidth, imageHeight);
       heightLeft -= pageHeight;
     }
-    pdf.save("conference-ticket.pdf");
+    try {
+      const pdfData = pdf.output("datauristring");
+      const link = document.createElement("a");
+      link.href = pdfData;
+      link.download = "conference-ticket.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      const pdfData = pdf.output("datauristring");
+      console.error("Error downloading PDF:", err);
+      window.open(pdfData, "_blank");
+    }
   });
 }
