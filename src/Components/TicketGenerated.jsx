@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import NavPage from "./NavPage";
-import PropTypes from "prop-types";
 import Progress from "./Progress";
 import Barcode from "./Barcode";
+import PropTypes from "prop-types";
+import { ticketDownloader } from "../Pages/TicketDownloader";
 function TicketGenerated({ select, ticketType }) {
   const [ticketData, setTicketData] = useState(null);
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function TicketGenerated({ select, ticketType }) {
           <h2>Your Ticket is Booked!</h2>
           <p>You can download or Check your email for a copy</p>
 
-          <div className="ticket-bg">
+          <div className="ticket-bg" id="ticket-template">
             <div className="ticket-content">
               <div className="ticket__content-container">
                 <div className="ticket-subcontent">
@@ -37,7 +38,12 @@ function TicketGenerated({ select, ticketType }) {
                   <p>📍 04 Rumens road, Ikoyi, Lagos</p>
                   <p>March 15, 2025 | 7:00 PM</p>
                   <div className="image">
-                    <img src={ticketData.imageUrl} alt="user Image" />
+                    <img
+                      src={ticketData.imageUrl}
+                      alt="user Image"
+                      crossOrigin="anonymous"
+                      style={{ width: "132px", borderRadius: "6%" }}
+                    />
                   </div>
                 </div>
 
@@ -75,10 +81,12 @@ function TicketGenerated({ select, ticketType }) {
         </div>
         <div className="ticket-btn">
           <NavLink className="btn-cancel btn" to="/">
-            Back to Form
+            Book Another Ticket
           </NavLink>
 
-          <button className="btn-next btn">Download Ticket</button>
+          <button className="btn-next btn" onClick={ticketDownloader}>
+            Download Ticket
+          </button>
         </div>
       </div>
 
